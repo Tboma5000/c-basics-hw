@@ -17,6 +17,7 @@ int main() {
         scanf(" %c", &operator);
 	printf("\n");
 
+	printf("matrix1: \n");
 	for (int i=0; i<x1; i++) {
                 for (int j=0; j<y1; j++) {
                         matrix1[i][j] = rand() % 100 +1;        
@@ -27,6 +28,7 @@ int main() {
 
         printf("\n");
 
+	printf("matrix2: \n");
         for (int i=0; i<x2; i++) {
                 for (int j=0; j<y2; j++) {
                         matrix2[i][j] = rand() % 100 +1;
@@ -35,11 +37,53 @@ int main() {
                 printf("\n");
         }
 
+	printf("\n");
+
 	if (operator=='+') {
-		
+		if (x1==x2 && y1==y2) {
+			int matrixResult[x1][y1];
+			//matrixResult[0][0] = matrix1[0][0] + matrix2[0][0];
+			//matrixResult[0][1] = matrix1[0][1] + matrix2[0][1];		
+			for (int i=0; i<x1; i++) {
+				for (int j=0; j<y1; j++) {
+					matrixResult[i][j] = matrix1[i][j] + matrix2[i][j];
+				}
+			}
+			printf("Result: \n");
+			for (int i=0; i<x1; i++) {
+		                for (int j=0; j<y1; j++) {
+                	        	printf(" %d", matrixResult[i][j]);
+              			}
+              			 printf("\n");
+       			 }
+	
+		}
+		else {
+			printf("\nYou can`t add matrixs with different quantity of rows and columns");
+		}		
 	}
 	else if (operator=='-') {
+		if (x1==x2 && y1==y2) {
+                        int matrixResult[x1][y1];
+                        //matrixResult[0][0] = matrix1[0][0] + matrix2[0][0];
+                        //matrixResult[0][1] = matrix1[0][1] + matrix2[0][1];           
+                        for (int i=0; i<x1; i++) {
+                                for (int j=0; j<y1; j++) {
+                                        matrixResult[i][j] = matrix1[i][j] - matrix2[i][j];
+                                }
+                        }
+			printf("Result: \n");
+			for (int i=0; i<x1; i++) {
+		                for (int j=0; j<y1; j++) {
+                		        printf(" %d", matrixResult[i][j]);
+               			}
+               			printf("\n");
+       			}
 
+                }
+                else {
+                        printf("\nYou can`t add matrixs with different quantity of rows and columns");
+                }
 	}
 	else if (operator=='*') {
 
@@ -48,6 +92,6 @@ int main() {
 		printf("\nError");
 	}
 
-	
+	printf("\n");
 	return 0;
 }
