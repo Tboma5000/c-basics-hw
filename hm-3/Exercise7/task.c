@@ -12,6 +12,11 @@ int main() {
 	int storage = 1;
 	int item, real_size = 0;
 	int *arr = (int*)malloc(storage * sizeof(int));
+	
+	char operation = ' ';
+	printf("\nIf you want to sort your array from min to max, enter +\n");
+	printf("If you want to sort your array from max to min, enter -:\n");
+	scanf(" %c", &operation);
 
 	printf("Enter a numbers to array\n");
 	printf("To stop enter ctrl + d: \n");
@@ -28,7 +33,7 @@ int main() {
 		}
 		arr[real_size++] = item;
 	}
-	int size = sizeof(arr) / sizeof(arr[0]);
+	//int size = sizeof(arr) / sizeof(arr[0]);
 	
 	//if (storage>real_size) {
 	//	int new_storage = storage-1;
@@ -41,20 +46,44 @@ int main() {
 	print_arr(arr, storage);
 	
 	int position = 0;
-	for (int move=0; move<storage; move++) {	
-		int min = arr[move];
-		for (int i=move; i<storage; i++) {
-			if (min>arr[i]) {
-				min = arr[i];
-				position = i;
-				//printf("\nMin: %d\n", min);
+	
+	if (operation=='+') {
+		for (int move=0; move<storage; move++) {	
+			int min = arr[move];
+			for (int i=move; i<storage; i++) {
+				if (min>arr[i]) {
+					min = arr[i];
+					position = i;
+					//printf("\nMin: %d\n", min);
 				
-				int temp = arr[move];
-				arr[move] = arr[position];
-				arr[position] = temp;
+					int temp = arr[move];
+					arr[move] = arr[position];
+					arr[position] = temp;
+				}
 			}
+			//print_arr(arr, storage);
 		}
-		//print_arr(arr, storage);
+	}
+	else if(operation=='-') {
+		for (int move=0; move<storage; move++) {	
+			int max = arr[move];
+			for (int i=move; i<storage; i++) {
+				if (max<arr[i]) {
+					max = arr[i];
+					position = i;
+					//printf("\nMin: %d\n", min);
+				
+					int temp = arr[move];
+					arr[move] = arr[position];
+					arr[position] = temp;
+				}
+			}
+			//print_arr(arr, storage);
+		}
+
+	}
+	else {
+		printf("Error. Wrong type of sort");
 	}
 	print_arr(arr, storage);
 
