@@ -12,16 +12,27 @@ struct Student {
 
 struct Student *addToEnd(struct Student *root, char *name, int age, float gpa) {
     struct Student *node = malloc(sizeof(struct Student));
-    strcpy(node->name, name);
-    node->age = age;
-    node->gpa = gpa;
-    node->next = NULL;
     struct Student *p = root;
-    while (p->next) {
-        p = p->next;
-    }
+
+   	while (p->next) {
+      	 p = p->next;
+   	 }
+	if (!p->prev) {
+	  strcpy(root->name, name);
+   	  root->age = age;
+ 	  root->gpa = gpa;
+	  root->next = NULL;
+	  root->prev = root;  
+	} else {
+	   strcpy(node->name, name);
+ 	   node->age = age;
+ 	   node->gpa = gpa;
+ 	   node->next = NULL;
+	
+	
     p->next = node;
 	node->prev = p;
+	}
     return root;
 }
 
